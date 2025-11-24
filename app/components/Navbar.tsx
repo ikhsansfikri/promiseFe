@@ -14,6 +14,7 @@ export default function Navbar() {
                 <div className="hidden md:flex gap-8 text-gray-700 font-medium">
                     <a href="#hero" className="hover:text-orange-500">Beranda</a>
                     <a href="#fitur" className="hover:text-orange-500">Fitur</a>
+                    <a href="#announcements" className="hover:text-orange-500">Pengumuman</a>
                     <a href="#aplikasi" className="hover:text-orange-500">Aplikasi</a>
                 </div>
             </div>

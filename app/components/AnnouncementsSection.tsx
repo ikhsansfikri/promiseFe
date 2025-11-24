@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { AiFillFilePdf } from "react-icons/ai";
-import { Document, Page, pdfjs } from "react-pdf";
 
 interface Announcement {
     id: number;
@@ -11,21 +10,22 @@ interface Announcement {
     pdfUrl: string;
 }
 
-// Konfigurasi worker PDF
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
-
-// Contoh data pengumuman
+// Contoh 20 pengumuman
 const announcements: Announcement[] = Array.from({ length: 20 }, (_, i) => ({
     id: i + 1,
     title: `Pengumuman ${i + 1}`,
     description: `Deskripsi singkat untuk pengumuman ${i + 1}.`,
-    pdfUrl: `/pengumuman/sample-${i + 1}.pdf`,
+    pdfUrl:
+        i === 0
+            ? "https://usk.ac.id/wp-content/uploads/2025/11/Pengumuman-Wisuda-2025-4.pdf"
+            : "https://example.com/sample.pdf", // ganti sesuai PDF pengumuman lainnya
 }));
 
 export default function AnnouncementsSection() {
     const [currentPage, setCurrentPage] = useState(1);
     const announcementsPerPage = 6;
     const totalPages = Math.ceil(announcements.length / announcementsPerPage);
+
     const currentAnnouncements = announcements.slice(
         (currentPage - 1) * announcementsPerPage,
         currentPage * announcementsPerPage
@@ -55,6 +55,7 @@ export default function AnnouncementsSection() {
                     Pengumuman Terbaru
                 </h2>
 
+                {/* Grid pengumuman */}
                 <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
                     {currentAnnouncements.map((item) => (
                         <div
@@ -65,18 +66,17 @@ export default function AnnouncementsSection() {
                             <p className="text-gray-600 mb-4">{item.description}</p>
                             <button
                                 onClick={() => openModal(item.pdfUrl)}
-                                className="text-orange-500 hover:text-orange-600 underline text-sm font-medium transition flex items-center gap-2"
+                                className="text-orange-500 hover:text-orange-600 underline text-sm font-medium flex items-center gap-2"
                             >
                                 <AiFillFilePdf />
                                 Lihat PDF
                             </button>
-
                         </div>
                     ))}
                 </div>
 
                 {/* Pagination */}
-                <div className="flex justify-center mt-12 gap-3">
+                <div className="flex justify-center mt-12 gap-2 flex-wrap">
                     <button
                         onClick={() => goToPage(currentPage - 1)}
                         disabled={currentPage === 1}
@@ -110,18 +110,40 @@ export default function AnnouncementsSection() {
 
             {/* Modal PDF */}
             {modalOpen && selectedPDF && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-                    <div className="bg-white rounded-2xl w-11/12 md:w-3/4 lg:w-2/3 max-h-[90vh] overflow-auto relative">
-                        <button
-                            onClick={closeModal}
-                            className="absolute top-4 right-4 text-gray-700 hover:text-gray-900 text-xl font-bold"
-                        >
-                            &times;
-                        </button>
-                        <div className="p-6 flex justify-center">
-                            <Document file={selectedPDF}>
-                                <Page pageNumber={1} width={800} />
-                            </Document>
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
+                    <div className="relative w-full max-w-7xl max-h-full">
+                        <div className="relative bg-white rounded-lg shadow-lg overflow-hidden">
+                            {/* Header */}
+                            <div className="flex items-center justify-between border-b border-gray-200 px-4 py-3">
+                                <h3 className="text-lg font-medium text-gray-900">Preview PDF</h3>
+                                <button
+                                    type="button"
+                                    className="text-gray-500 hover:text-gray-700 rounded-md"
+                                    onClick={closeModal}
+                                >
+                                    &times;
+                                </button>
+                            </div>
+
+                            {/* Body */}
+                            <div className="h-[80vh] overflow-auto">
+                                <iframe
+                                    src={selectedPDF}
+                                    className="w-full h-full"
+                                    frameBorder="0"
+                                ></iframe>
+                            </div>
+
+                            {/* Footer */}
+                            <div className="flex justify-end gap-2 border-t border-gray-200 px-4 py-3">
+                                <button
+                                    type="button"
+                                    onClick={closeModal}
+                                    className="text-white bg-orange-500 hover:bg-orange-600 rounded-md px-4 py-2 text-sm font-medium"
+                                >
+                                    Close
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
