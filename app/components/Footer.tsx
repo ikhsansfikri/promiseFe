@@ -1,6 +1,6 @@
 export default function Footer() {
     return (
-        <footer className="bg-gray-900 text-gray-300 py-16">
+        <footer className="bg-gray-900 text-gray-300 pt-16 pb-4">
             <div className="container mx-auto px-6 grid md:grid-cols-3 gap-10">
                 <div>
                     <h3 className="text-lg font-semibold mb-3">ProMISe</h3>
@@ -21,12 +21,12 @@ export default function Footer() {
                 <div>
                     <h3 className="text-lg font-semibold mb-3">Kontak</h3>
                     <p className="text-sm">Telepon: (0651) 755-3205</p>
-                    <p className="text-sm">Email: humas@unsyiah.ac.id</p>
+                    <p className="text-sm">Email: humas@usk.ac.id</p>
                 </div>
             </div>
 
             <div className="text-center text-sm text-gray-400 mt-10">
-                © {new Date().getFullYear()} ProMISe — Powered by Universitas Terbuka
+                © {new Date().getFullYear()} ProMISe — Universitas Syiah Kuala
             </div>
         </footer>
     );
