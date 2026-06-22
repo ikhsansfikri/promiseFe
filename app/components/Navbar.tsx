@@ -85,7 +85,7 @@ export default function Navbar() {
                     </motion.div>
 
                     {/* Desktop Navigation Items */}
-                    <div className="hidden md:flex items-center gap-1 p-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20">
+                    <div className={`hidden md:flex items-center gap-1 p-1 rounded-full backdrop-blur-md border transition-all duration-500 ${activeSection === "hero" ? "bg-white/10 border-white/20" : "bg-gray-100/50 border-gray-300"}`}>
                         {navItems.map((item) => (
                             <motion.a
                                 key={item.id}
@@ -95,7 +95,7 @@ export default function Navbar() {
                                 whileTap={{ scale: 0.95 }}
                                 className={`relative px-5 sm:px-6 py-2 rounded-full font-medium transition-all duration-300 ${activeSection === item.id
                                     ? "bg-orange-500 text-white shadow-lg"
-                                    : "text-white/90 hover:text-white"
+                                    : activeSection === "hero" ? "text-white/90 hover:text-white" : "text-gray-700 hover:text-gray-900"
                                     }`}
                             >
                                 {item.label}
