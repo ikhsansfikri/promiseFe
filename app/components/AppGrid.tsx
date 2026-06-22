@@ -66,16 +66,16 @@ export default function AppGrid() {
     ];
 
     return (
-        <section id="aplikasi" className="py-28 bg-gray-50">
-            <div className="w-7xl mx-auto px-4">
+        <section id="aplikasi" className="py-16 sm:py-20 lg:py-28 bg-gray-50 px-4 sm:px-6">
+            <div className="max-w-7xl mx-auto">
                 <MotionFade>
-                    <h2 className="section-title">Aplikasi</h2>
-                    <p className="section-subtitle">
+                    <h2 className="section-title text-2xl sm:text-3xl lg:text-4xl">Aplikasi</h2>
+                    <p className="section-subtitle text-sm sm:text-base lg:text-lg max-w-2xl mx-auto">
                         Satu ekosistem pengadaan lengkap dan terintegrasi.
                     </p>
                 </MotionFade>
 
-                <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6 lg:gap-8">
                     {apps.map((app, i) => (
                         <MotionFade key={i}>
                             <AppIcon {...app} />
