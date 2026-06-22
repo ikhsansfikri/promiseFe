@@ -2,7 +2,7 @@ import "./globals.css";
 import { ReactNode } from "react";
 
 export const metadata = {
-  title: "ProMISe",
+  title: `ProMISe | ${process.env.NEXT_PUBLIC_APP_PARTNER}`,
   description: "Procurement Management Information System",
 };
 
