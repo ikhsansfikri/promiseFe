@@ -67,7 +67,7 @@ export default function AppGrid() {
 
     return (
         <section id="aplikasi" className="py-28 bg-gray-50">
-            <div className="container mx-auto px-6">
+            <div className="w-7xl mx-auto px-4">
                 <MotionFade>
                     <h2 className="section-title">Aplikasi</h2>
                     <p className="section-subtitle">
