@@ -26,7 +26,7 @@ export default function Footer() {
                             whileHover={{ color: "#e5e7eb" }}
                             transition={{ duration: 0.2 }}
                         >
-                            Smart Procurement Management Information System
+                            Procurement Management Information System
                         </motion.p>
                         <motion.p
                             className="text-gray-400 leading-relaxed cursor-default text-sm sm:text-base"
@@ -71,7 +71,12 @@ export default function Footer() {
                                 transition={{ duration: 0.2 }}
                             >
                                 <span className="text-orange-500">📞</span>
-                                (0651) 755-3205
+                                <a
+                                    href={`tel:${process.env.NEXT_PUBLIC_APP_PHONE}`}
+                                    className="hover:text-orange-500 transition-colors duration-200"
+                                >
+                                    {process.env.NEXT_PUBLIC_APP_PHONE}
+                                </a>
                             </motion.p>
                             <motion.p
                                 className="text-gray-400 flex items-center justify-center gap-2 cursor-default text-sm sm:text-base"
@@ -79,7 +84,12 @@ export default function Footer() {
                                 transition={{ duration: 0.2 }}
                             >
                                 <span className="text-orange-500">✉️</span>
-                                humas@usk.ac.id
+                                <a
+                                    href={`mailto:${process.env.NEXT_PUBLIC_APP_MAIL}`}
+                                    className="hover:text-orange-500 transition-colors duration-200"
+                                >
+                                    {process.env.NEXT_PUBLIC_APP_MAIL}
+                                </a>
                             </motion.p>
                         </div>
                     </div>
