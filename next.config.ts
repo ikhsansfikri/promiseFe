@@ -7,7 +7,7 @@ const nextConfig: NextConfig = {
 module.exports = {
   allowedDevOrigins: process.env.ALLOWED_DEV_ORIGINS
     ? process.env.ALLOWED_DEV_ORIGINS.split(',').map(origin => origin.trim())
-    : '',
+    : 'localhost',
 }
 
 export default nextConfig;
