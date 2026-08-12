@@ -36,7 +36,6 @@ export default function ParticlesBackground() {
                             random: true,
                             straight: false,
                             outModes: "out",
-                            attract: { enable: false },
                         },
                         links: {
                             enable: true,
@@ -58,7 +57,6 @@ export default function ParticlesBackground() {
                         },
                     },
                     detectRetina: true,
-                    // background: { color: "transparent" },
                 },
             });
         };
